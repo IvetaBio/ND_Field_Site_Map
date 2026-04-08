@@ -27,3 +27,30 @@ ND <- map_data("state") %>%
 
 
 # Now we are going to plot my points onto ND's base map
+ggplot()+
+  geom_polygon(
+    data = ND,
+    aes(x = long, y = lat, group = group),
+    fill = "grey90",
+    color = "black")+
+  geom_sf(data = sites_sf, aes(color = Site, shape = factor(Year)), size = 3)+
+  geom_sf_text(
+    data = sites_sf,
+    aes(label = paste(Site,Year)),
+    nudge_y = 0.08,
+    size = 3)+
+  coord_sf()+
+  theme_minimal()
+
+
+
+
+
+
+
+
+
+
+
+
+

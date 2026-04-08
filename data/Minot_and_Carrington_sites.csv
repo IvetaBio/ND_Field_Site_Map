@@ -1,8 +1,8 @@
 Site,Year,Plant_Type,Resident_Rhizobium_Level,Latitude,Longitude
-Carrington,2024,NA,Low,47.5183516,99.1398362
-Carrington,2024,NA,High,47.5148858,99.1294022
-Carrington,2025,NA,Low,47.5187840,99.1409850
-Carrington,2025,NA,High,47.5179114,99.1450900
+Carrington,2024,NA,Low,47.5183516,-99.1398362
+Carrington,2024,NA,High,47.5148858,-99.1294022
+Carrington,2025,NA,Low,47.5187840,-99.1409850
+Carrington,2025,NA,High,47.5179114,-99.1450900
 Minot,2024,Low,Lentil,48.17889,-101.30458
 Minot,2024,High,Lentil,48.18001,-101.30369
 Minot,2024,Low,Yellow Pea,48.179,-101.30555

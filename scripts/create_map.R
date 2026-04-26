@@ -10,6 +10,7 @@ library(tidyverse)
 library(patchwork)
 
 Dickinson_and_Williston_sites <- read.csv("data/site_coordinates.csv")
+Minot_and_Carrington_sites <- read.csv("data/Minot_and_Carrington_sites.csv")
 
 #now turning the regular table into a spatial object "sf"
 sites_sf <- st_as_sf(
@@ -18,6 +19,11 @@ sites_sf <- st_as_sf(
   crs = 4326 #Note: crs = coordinate reference system, based on GPS(WGS84), and units are in degrees
 )
 
+MC_sites_sf <- st_as_sf(
+  Minot_and_Carrington_sites,
+  coords = c("Longitude","Latitude"),
+  crs = 4326
+)
 
 #creating the smallest possible map first
 ggplot()+
@@ -52,11 +58,37 @@ ggplot()+
         axis.text.y = element_text(color = "black"))
 
 
+MC_sites_map <- ggplot() +
+  geom_polygon(
+    data = ND,
+    aes(x = long, y = lat, group = group),
+    fill = "grey90",
+    color = "black"
+  ) +
+  geom_sf(
+    data = MC_sites_sf,
+    aes(color = Site, shape = as.factor(Year)),
+    size = 3
+  ) +
+  geom_sf_text(
+    data = MC_sites_sf[!duplicated(MC_sites_sf$Site), ],
+    aes(label = Site),
+    nudge_y = 0.08,
+    size = 3
+  ) +
+  coord_sf() +
+  labs(
+    shape = "Year",
+    color = "Site",
+    title = "North Dakota"
+  ) +
+  theme_minimal()+
+  theme(
+    axis.text.x = element_text(color = "black"),
+    axis.text.y = element_text(color = "black")
+  )
 
-
-
-
-
+MC_sites_map
 
 
 
